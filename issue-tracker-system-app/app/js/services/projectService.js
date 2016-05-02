@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('issueService',
+app.factory('projectService',
     function ($http, baseServiceUrl) {
 
         return {
