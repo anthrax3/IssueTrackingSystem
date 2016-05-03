@@ -4,6 +4,7 @@ app.controller('AppController',
     function ($scope, authService) {
         $scope.authService = authService;
 
+        //TODO - fix logout notification
         $scope.logout = function(){
             authService.logout(
                 function success(){

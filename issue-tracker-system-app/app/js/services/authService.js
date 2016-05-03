@@ -41,7 +41,7 @@ app.factory('authService',
             var request = {
                 method: 'POST',
                 url: baseServiceUrl + 'api/Token',
-                data: "grant_type=password&username=" + userData.username + "&password=" + userData.password,
+                data: "grant_type=password&username=" + userData.Email + "&password=" + userData.Password,
                 headers: {
                     ContentType: "application/x-www-form-urlencoded"
                 }
@@ -67,6 +67,19 @@ app.factory('authService',
             }).error(error);
         }
 
+        function register(userData, success, error){
+            var request = {
+                method: 'POST',
+                url: baseServiceUrl + 'api/Account/Register',
+                data: userData
+            };
+
+            $http(request).success(function (data) {
+                login(userData, success, error);
+
+            }).error(error);
+        }
+
         function logout(success, error) {
             var request = {
                 method: 'POST',
@@ -83,27 +96,16 @@ app.factory('authService',
 
         return {
             login: login,
-
-            register: function(userData, success, error) {
-                // TODO
-            },
-
+            register: register,
             logout: logout,
-
             getCurrentUser : getCurrentUser,
-
             isAnonymous : isAnonymous,
-
             isLoggedIn : isLoggedIn,
-
             isNormalUser : function() {
                 // TODO
             },
-
             isAdmin : isAdmin,
-
             getAuthHeaders : getAuthHeaders,
-
             changePassword: function(){
                 // TODO
             }
