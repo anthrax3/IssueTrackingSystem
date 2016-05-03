@@ -2,8 +2,8 @@
 
 var app = angular.module('app', ['ngRoute', 'ngResource']);
 
-app.constant('baseServiceUrl', 'http://softuni-issue-tracker.azurewebsites.net');
-app.constant('pageSize', 2);
+app.constant('baseServiceUrl', 'http://softuni-issue-tracker.azurewebsites.net/');
+app.constant('pageSize', 5);
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
