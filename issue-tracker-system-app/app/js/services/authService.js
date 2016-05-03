@@ -6,6 +6,7 @@ app.factory('authService',
         function getCurrentUser() {
             var userObject = sessionStorage['currentUser'];
             if (userObject) {
+
                 return JSON.parse(userObject);
             }
         }
@@ -94,19 +95,30 @@ app.factory('authService',
             }).error(error);
         }
 
+        function changePassword(userData, success, error){
+            var request = {
+                method: 'POST',
+                url: baseServiceUrl + 'api/Account/ChangePassword',
+                data: userData,
+                headers: getAuthHeaders()
+            };
+
+            $http(request).success(function (data) {
+                success(data);
+            }).error(error);
+        }
+
         return {
+            getCurrentUser : getCurrentUser,
+            getAuthHeaders : getAuthHeaders,
+            isAnonymous : isAnonymous,
+            isLoggedIn : isLoggedIn,
+            isAdmin : isAdmin,
             login: login,
             register: register,
             logout: logout,
-            getCurrentUser : getCurrentUser,
-            isAnonymous : isAnonymous,
-            isLoggedIn : isLoggedIn,
+            changePassword: changePassword,
             isNormalUser : function() {
-                // TODO
-            },
-            isAdmin : isAdmin,
-            getAuthHeaders : getAuthHeaders,
-            changePassword: function(){
                 // TODO
             }
         }

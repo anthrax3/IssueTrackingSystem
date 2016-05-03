@@ -12,6 +12,7 @@
             <li ng-if="authService.isLoggedIn()">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button">{{authService.getCurrentUser().userName}}</a>
                 <ul class="dropdown-menu">
+                    <li><a href="#/profile/password">Change Password</a></li>
                     <li><a href="#/" ng-click="logout()">Logout</a></li>
                 </ul>
             </li>

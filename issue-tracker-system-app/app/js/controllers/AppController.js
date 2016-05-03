@@ -1,10 +1,9 @@
 'use strict';
 
 app.controller('AppController',
-    function ($scope, authService) {
+    function ($scope, $location, authService, notifyService) {
         $scope.authService = authService;
 
-        //TODO - fix logout notification
         $scope.logout = function(){
             authService.logout(
                 function success(){
@@ -15,6 +14,19 @@ app.controller('AppController',
                     notifyService.showInfo("Logout failed", err);
                 }
             )
+        };
+
+        $scope.changePassword = function(userData) {
+            authService.changePassword(
+                userData,
+                function success() {
+                    notifyService.showInfo("Password changed successfully");
+                    $location.path("/");
+                },
+                function error(err) {
+                    notifyService.showError("Password changing failed", err);
+                }
+            );
         }
     }
 );
