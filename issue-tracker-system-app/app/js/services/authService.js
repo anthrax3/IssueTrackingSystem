@@ -6,15 +6,33 @@ app.factory('authService',
         function getCurrentUser() {
             var userObject = sessionStorage['currentUser'];
             if (userObject) {
-                var parseUserObject = JSON.parse(userObject);
-                return parseUserObject.userName;
+                return JSON.parse(userObject);
             }
+        }
+
+        function getAuthHeaders(){
+            var headers = {};
+            var currentUser = getCurrentUser();
+            if (currentUser) {
+                headers['Authorization'] = 'Bearer ' + currentUser.access_token;
+            }
+
+            return headers;
+        }
+
+        function isAnonymous(){
+            return sessionStorage['currentUser'] == undefined;
+        }
+
+        function isLoggedIn(){
+            return sessionStorage['currentUser'] != undefined;
         }
 
         function isAdmin() {
             var userObject = sessionStorage['currentUser'];
             if (userObject) {
                 var parseUserObject = JSON.parse(userObject);
+
                 return parseUserObject.isAdmin;
             }
         }
@@ -49,6 +67,20 @@ app.factory('authService',
             }).error(error);
         }
 
+        function logout(success, error) {
+            var request = {
+                method: 'POST',
+                url: baseServiceUrl + 'api/Account/Logout',
+                headers: getAuthHeaders()
+            };
+
+            $http(request).success(function (data) {
+                delete sessionStorage['currentUser'];
+                delete sessionStorage['username'];
+                success(data);
+            }).error(error);
+        }
+
         return {
             login: login,
 
@@ -56,19 +88,13 @@ app.factory('authService',
                 // TODO
             },
 
-            logout: function() {
-                // TODO
-            },
+            logout: logout,
 
             getCurrentUser : getCurrentUser,
 
-            isAnonymous : function() {
-                // TODO
-            },
+            isAnonymous : isAnonymous,
 
-            isLoggedIn : function() {
-                // TODO
-            },
+            isLoggedIn : isLoggedIn,
 
             isNormalUser : function() {
                 // TODO
@@ -76,9 +102,7 @@ app.factory('authService',
 
             isAdmin : isAdmin,
 
-            getAuthHeaders : function() {
-                // TODO
-            },
+            getAuthHeaders : getAuthHeaders,
 
             changePassword: function(){
                 // TODO
