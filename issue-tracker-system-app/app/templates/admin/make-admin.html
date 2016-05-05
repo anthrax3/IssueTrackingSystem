@@ -1,0 +1,23 @@
+<div ng-init="showAllUsers()" ng-controller="AdminController" ng-hide="delay" class="row delay">
+    <div class="col-md-12">
+        <h2>Users</h2>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>UserId</th>
+                <th>UserRole</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="user in users">
+            <tr>
+                <td>{{user.Username}}</td>
+                <td>{{user.Id}}</td>
+                <td>{{user.isAdmin}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

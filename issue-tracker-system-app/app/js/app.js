@@ -26,6 +26,16 @@ app.config(function ($routeProvider) {
         controller: 'AppController'
     });
 
+    $routeProvider.when('/admin', {
+        templateUrl: 'app/templates/admin/admin-dashboard.html',
+        controller: 'AdminController'
+    });
+
+    $routeProvider.when('/users/makeadmin', {
+        templateUrl: 'app/templates/admin/make-admin.html',
+        controller: 'AdminController'
+    });
+
     $routeProvider.otherwise({
         redirectTo: '/'
     });
