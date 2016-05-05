@@ -7,7 +7,7 @@ app.constant('pageSize', 5);
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'app/templates/home.html',
+        templateUrl: 'app/templates/dashboard.html',
         controller: 'IssuesController'
     });
 
