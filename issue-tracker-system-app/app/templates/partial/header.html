@@ -1,21 +1,27 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#/">Issue Tracking System</a>
         </div>
-        <ul ng-if="authService.isAnonymous()" class="nav navbar-nav">
-            <li><a href="#/register">Register</a></li>
-            <li><a href="#/login">Login</a></li>
-        </ul>
+        <div class="navbar-collapse collapse">
 
-        <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav navbar-right">
-            <li ng-if="authService.isLoggedIn()">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button">{{authService.getCurrentUser().userName}}</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#/profile/password">Change Password</a></li>
-                    <li><a href="#/" ng-click="logout()">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+            <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav">
+                <li><a href="#/">Dashboard</a></li>
+                <li ng-if="authService.isAdmin()"><a href="#/">Admin Dashboard</a></li>
+            </ul>
+
+            <ul ng-if="authService.isAnonymous()" class="nav navbar-nav navbar-right">
+                <li><a ng-href="#/register">Register</a></li>
+                <li><a href="#/login">Login</a></li>
+            </ul>
+
+            <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav navbar-right">
+                <li><a class="dropdown-toggle" data-toggle="dropdown" role="button">Hello {{authService.getCurrentUser().userName}}</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/profile/password">Change Password</a></li>
+                        <li><a href="#/" ng-click="logout()">Logout</a></li>
+                    </ul>
+            </ul>
+        </div>
     </div>
 </nav>
