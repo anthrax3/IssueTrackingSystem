@@ -9,6 +9,7 @@
                 <th>Username</th>
                 <th>UserId</th>
                 <th>UserRole</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody ng-repeat="user in users">
@@ -16,6 +17,7 @@
                 <td>{{user.Username}}</td>
                 <td>{{user.Id}}</td>
                 <td>{{user.isAdmin}}</td>
+                <th><span ng-if="!user.isAdmin" class="btn btn-default btn-xs" ng-click="makeAdmin(user.Id)">Make Admin</span></th>
             </tr>
             </tbody>
         </table>

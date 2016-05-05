@@ -12,5 +12,21 @@ app.controller('AdminController',
                     notifyService.showError("Failed loading data...", err);
                 });
         };
+
+        $scope.makeAdmin = function (id) {
+            var userData = {
+                userId: id
+            };
+
+            userService.makeAdmin(
+                userData,
+                function success(data) {
+                    $scope.showAllUsers();
+                },
+                function error(err) {
+                    notifyService.showError("Failed making Admin!", err);
+                });
+        };
+
     }
 );

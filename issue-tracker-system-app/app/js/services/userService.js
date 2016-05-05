@@ -16,8 +16,22 @@ app.factory('userService',
             }).error(error);
         }
 
+        function makeAdmin(userData, success, error){
+            var request = {
+                method: 'PUT',
+                url: baseServiceUrl + 'users/makeadmin',
+                data: userData,
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function(data){
+                success(data);
+            }).error(error)
+        }
+
         return {
-            getAllUsers: getAllUsers
+            getAllUsers: getAllUsers,
+            makeAdmin: makeAdmin
         }
     }
 );
