@@ -36,6 +36,12 @@ app.config(function ($routeProvider) {
         controller: 'AdminController'
     });
 
+    $routeProvider.when('/projects', {
+        templateUrl: 'app/templates/admin/view-all-projects.html',
+        controller: 'ViewAllProjectsController'
+    });
+
+
     $routeProvider.otherwise({
         redirectTo: '/'
     });

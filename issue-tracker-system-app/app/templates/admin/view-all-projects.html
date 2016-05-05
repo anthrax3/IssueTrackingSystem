@@ -1,0 +1,26 @@
+<div ng-init="getAllProjects()" ng-controller="ViewAllProjectsController" ng-hide="delay" class="row delay">
+    <div class="col-md-12">
+        <h2>Current Projects</h2>
+    </div>
+    <div class="form-group col-md-3 pull-right">
+        <input type="text" ng-model="search" class="form-control" placeholder="Search by project name">
+    </div>
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Lead</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="project in allProjects | filter:search">
+            <tr>
+                <td>{{project.Name}}</td>
+                <td>{{project.Lead.Username}}</td>
+                <td>Some Action</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
