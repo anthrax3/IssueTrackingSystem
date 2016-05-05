@@ -74,8 +74,8 @@
       <file leaf-file-name="make-admin.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/admin/make-admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5428907">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.3877791">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/app/templates/partial/header.html" />
         <option value="$PROJECT_DIR$/app/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/app/js/services/userService.js" />
-        <option value="$PROJECT_DIR$/app/templates/admin/make-admin.html" />
         <option value="$PROJECT_DIR$/app/js/controllers/AdminController.js" />
+        <option value="$PROJECT_DIR$/app/templates/admin/make-admin.html" />
       </list>
     </option>
   </component>
@@ -882,8 +882,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/admin/make-admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5428907">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.3877791">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding />
         </state>
       </provider>
