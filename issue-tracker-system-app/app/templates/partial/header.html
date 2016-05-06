@@ -1,28 +1,34 @@
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="#/">Issue Tracking System</a>
         </div>
-        <div class="navbar-collapse collapse">
-
+        <div class="collapse navbar-collapse" id="myNavbar">
             <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav">
                 <li><a href="#/">Dashboard</a></li>
                 <li ng-if="authService.isAdmin()"><a href="#/admin">Admin Dashboard</a></li>
                 <li ng-if="authService.isAdmin()"><a ng-href="#/users/makeadmin">Make Admin</a></li>
+                <li ng-if="authService.isAdmin()"><a ng-href="#/projects">View All Projects</a></li>
             </ul>
-
             <ul ng-if="authService.isAnonymous()" class="nav navbar-nav navbar-right">
-                <li><a ng-href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
+                <li><a href="#/register">Register</a></li>
+                <li><a href="#/login"> Login</a></li>
             </ul>
 
             <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav navbar-right">
-                <li><a class="dropdown-toggle" data-toggle="dropdown" role="button">Hello {{authService.getCurrentUser().userName}}</a>
+                <li><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Hello {{authService.getCurrentUser().userName}}</a>
                     <ul class="dropdown-menu">
                         <li><a href="#/profile/password">Change Password</a></li>
                         <li><a href="#/" ng-click="logout()">Logout</a></li>
                     </ul>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+

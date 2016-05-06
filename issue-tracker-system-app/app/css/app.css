@@ -1,6 +1,7 @@
 body {
-    font-family: Calibri, Arial, serif;
-    background-color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    margin:0;
 }
 
 #app-header {
@@ -381,3 +382,4 @@ html,body{
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
 }
+
