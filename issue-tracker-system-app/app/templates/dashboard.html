@@ -1,71 +1,97 @@
-<div ng-if="authService.isAnonymous()">
-    <div class="container col-centered">
-
-        <div class="row">
-            <div class="col-sm-5">
-                <div tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form class="login-form" ng-controller="LoginController">
-                                <div class="modal-header">
-                                    <h2>Login</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form col-md-12 center-block">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control input-lg" placeholder="Email" required="required" ng-model="userData.Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control input-lg" placeholder="Password" required="required" ng-model="userData.Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary btn-lg btn-block" ng-click="login(userData)">Login</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </form>
+<div class="row">
+    <div ng-if="authService.isAnonymous()">
+        <div class="container col-centered">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form class="login-form" ng-controller="LoginController">
+                                    <div class="modal-header">
+                                        <h2>Login</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form col-md-12 center-block">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control input-lg" placeholder="Email" required="required" ng-model="userData.Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control input-lg" placeholder="Password" required="required" ng-model="userData.Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary btn-lg btn-block" ng-click="login(userData)">Login</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-sm-1 middle-border"></div>
-            <div class="col-sm-1"></div>
+                <div class="col-sm-1 middle-border"></div>
+                <div class="col-sm-1"></div>
 
-            <div class="col-sm-5">
-                <div tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form class="login-form" ng-controller="RegisterController">
-                                <div class="modal-header">
-                                    <h2>Register</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form col-md-12 center-block">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control input-lg" placeholder="Email" required="required" ng-model="userData.Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control input-lg" placeholder="Password" required="required" ng-model="userData.Password">
-                                        </div>
+                <div class="col-sm-5">
+                    <div tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form class="login-form" ng-controller="RegisterController">
+                                    <div class="modal-header">
+                                        <h2>Register</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form col-md-12 center-block">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control input-lg" placeholder="Email" required="required" ng-model="userData.Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control input-lg" placeholder="Password" required="required" ng-model="userData.Password">
+                                            </div>
 
-                                        <div class="form-group">
-                                            <input type="password" class="form-control input-lg" placeholder="Confirm Password"  required="required" ng-model="userData.ConfirmPassword">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary btn-lg btn-block" ng-click="register(userData)">Register</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </form>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control input-lg" placeholder="Confirm Password"  required="required" ng-model="userData.ConfirmPassword">
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary btn-lg btn-block" ng-click="register(userData)">Register</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div ng-if="authService.isLoggedIn()" class="row delay" ng-hide="delay">
+        <div class="col-md-12">
+            <h2>Assigned Issues</h2>
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr>
+                    <th>Issues</th>
+                    <th>Description</th>
+                    <th>Project Name</th>
+                    <th>Due Date</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="issue in issues">
+                <tr>
+                    <td>{{issue.Title}}</td>
+                    <td>{{issue.Description}}</td>
+                    <td>{{issue.Project.Name}}</td>
+                    <td>{{issue.DueDate}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-if="authService.isAdmin()">
+            <a class="btn btn-primary" href="#/projects" >View All Projects</a>
+        </div>
+    </div>
 </div>
 
-<div ng-if="authService.isLoggedIn()" class="container">
-    <h2>Dashboard</h2>
-</div>
