@@ -8,16 +8,17 @@ app.controller('IssuesController',
         };
 
         $scope.getIssues = function () {
-            issueService.getUsersIssues(
-                $scope.issuesParams,
-                function success(data) {
-                    $scope.issues = data.Issues;
-                    $scope.allIssues = data.TotalPages * $scope.issuesParams.pageSize;
-                },
-                function error(err) {
-                    notifyService.showError("Failed loading data...", err);
-                });
-
+            if (authService.isLoggedIn()) {
+                issueService.getUsersIssues(
+                    $scope.issuesParams,
+                    function success(data) {
+                        $scope.issues = data.Issues;
+                        $scope.allIssues = data.TotalPages * $scope.issuesParams.pageSize;
+                    },
+                    function error(err) {
+                        notifyService.showError("Failed loading data...", err);
+                    });
+            }
         };
 
         $scope.getIssues();

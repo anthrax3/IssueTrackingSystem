@@ -87,6 +87,8 @@
                 </tr>
                 </tbody>
             </table>
+            <pagination ng-if="allIssues > issuesParams.pageSize" total-items="allIssues" ng-model="issuesParams.startPage" items-per-page="issuesParams.pageSize" ng-change="getIssues()" max-size="9" boundary-links="true" class="aligner">
+            </pagination>
         </div>
 
         <div ng-if="authService.isAdmin()">
