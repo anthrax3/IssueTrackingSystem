@@ -17,7 +17,7 @@
             </thead>
             <tbody ng-repeat="project in allProjects | filter:search">
             <tr>
-                <td>{{project.Name}}</td>
+                <td><a ng-href="#/projects/{{project.Id}}">{{project.Name}}</a></td>
                 <td>{{project.Description}}</td>
                 <td>{{project.Lead.Username}}</td>
                 <td>

@@ -16,8 +16,22 @@ app.factory('projectService',
             }).error(error);
         }
 
+        function getProjectById(id, success, error) {
+            var request = {
+                method: 'GET',
+                url: baseServiceUrl + 'projects/' + id,
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function (data) {
+                success(data);
+
+            }).error(error);
+        }
+
         return {
-            getAllProjects: getAllProjects
+            getAllProjects: getAllProjects,
+            getProjectById: getProjectById
         }
     }
 );

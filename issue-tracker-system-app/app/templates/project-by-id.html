@@ -1,0 +1,32 @@
+<div class="row delay" ng-hide="delay">
+    <div class="col-md-12">
+        <h3>Project: {{projectData.Name}}</h3>
+        <span ng-if="isProjectLeader || authService.isAdmin">
+                    <a ng-href="#/projects/{{projectId}}/edit" class="btn btn-success btn-sm">Edit Project</a>
+            </span>
+    </div>
+    <div class="col-md-12">
+        <p><strong>Name: </strong>{{projectData.Name}}</p>
+        <p><strong>Key: </strong>{{projectData.ProjectKey}}</p>
+        <p><strong>Description: </strong>{{projectData.Description}}</p>
+        <p><strong>Leader Id: </strong> {{projectData.Lead.Id}}
+            <span class="gray-info">
+                ({{projectData.Lead.Username}})
+            </span>
+        </p>
+        <p><strong>Labels: </strong>
+            <span ng-repeat="label in projectData.Labels">
+                <span class="label label-info">
+                    {{label.Name}}
+                </span>
+            </span>
+        </p>
+        <p><strong>Priorities: </strong>
+            <span ng-repeat="priority in projectData.Priorities">
+                <span class="label label-danger">
+                    {{priority.Name}}
+                </span>
+            </span>
+        </p>
+    </div>
+</div>

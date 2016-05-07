@@ -41,6 +41,11 @@ app.config(function ($routeProvider) {
         controller: 'ViewAllProjectsController'
     });
 
+    $routeProvider.when('/projects/:id', {
+        templateUrl: 'app/templates/project-by-id.html',
+        controller: 'ViewProjectController'
+    });
+
     $routeProvider.when('/issues/:id', {
         templateUrl: 'app/templates/issue-by-id.html',
         controller: 'ViewIssueController'
