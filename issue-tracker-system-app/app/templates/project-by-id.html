@@ -1,11 +1,11 @@
 <div class="row delay" ng-hide="delay">
     <div class="col-md-12">
         <h3>Project: {{projectData.Name}}</h3>
-        <span ng-if="isProjectLeader || authService.isAdmin">
+        <span ng-if="isProjectLeader || authService.isAdmin()">
                     <a ng-href="#/projects/{{projectId}}/edit" class="btn btn-success btn-sm">Edit Project</a>
             </span>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-11">
         <p><strong>Name: </strong>{{projectData.Name}}</p>
         <p><strong>Key: </strong>{{projectData.ProjectKey}}</p>
         <p><strong>Description: </strong>{{projectData.Description}}</p>
@@ -33,4 +33,33 @@
             </span>
         </p>
     </div>
+
+    <div class="col-md-12">
+
+        <h2>Issues</h2>
+
+        <table class="all-projects-table table table-responsive table-hover">
+            <thead>
+            <tr>
+                <th class="col-md-3">Issue</th>
+                <th class="col-md-3">Description</th>
+                <th class="col-md-2">Due Date</th>
+                <th class="col-md-2">Assignee</th>
+                <th class="col-md-1">Priority</th>
+                <th class="col-md-2">Status</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="issue in projectIssues">
+            <tr>
+                <td><a ng-href="#/issues/{{issue.Id}}">{{issue.Title}}</a></td>
+                <td >{{issue.Description}}</td>
+                <td>{{issue.DueDate}}</td>
+                <td>{{issue.Assignee.Username}}</td>
+                <td>{{issue.Priority.Name}}</td>
+                <td>{{issue.Status.Name}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

@@ -12,5 +12,15 @@ app.controller('ViewProjectController',
             function error(err) {
                 notifyService.showError("Failed loading data", err);
             });
+
+        projectService.getProjectIssues(
+            $routeParams.id,
+            function success(data){
+                $scope.projectIssues = data;
+            },
+            function error(err){
+                notifyService.showError('Failed loading data', err)
+            }
+        )
     }
 );

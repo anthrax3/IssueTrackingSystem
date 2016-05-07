@@ -29,9 +29,22 @@ app.factory('projectService',
             }).error(error);
         }
 
+        function getProjectIssues(projectId, success, error){
+            var request = {
+                method: 'GET',
+                url: baseServiceUrl + 'projects/' + projectId + '/issues',
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function(data){
+                success(data);
+            }).error(error);
+        }
+
         return {
             getAllProjects: getAllProjects,
-            getProjectById: getProjectById
+            getProjectById: getProjectById,
+            getProjectIssues:getProjectIssues
         }
     }
 );
