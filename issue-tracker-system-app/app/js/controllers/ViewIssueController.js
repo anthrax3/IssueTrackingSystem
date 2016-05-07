@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('ViewIssueController',
-    function($scope, $location, $routeParams, authService, notifyService, issueService) {
+    function($scope, $location, $routeParams, authService, notifyService, issueService, commentService) {
 
         issueService.getIssueById(
             $routeParams.id,
@@ -14,6 +14,15 @@ app.controller('ViewIssueController',
 
             }, function error(err) {
                 notifyService.showError("Failed loading data", err);
+            }
+        );
+
+        commentService.getCommentForIssueId(
+            $routeParams.id,
+            function success(data) {
+                $scope.issueComments = data;
+            }, function error(err) {
+                notifyService.showError('Failed loading data', err);
             }
         );
     }

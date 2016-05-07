@@ -1,6 +1,6 @@
 <div ng-hide="delay" class="row delay">
     <div class="col-md-12">
-        <h3>Issue</h3>
+        <h2>Issue</h2>
         <span ng-if="isAssignee || isAdmin">
             <a ng-href="#/issues/{{issueId}}/edit" class="btn btn-success btn-sm">Edit Issue</a>
         </span>
@@ -34,6 +34,8 @@
                 <span class="label label-info">
                     {{label.Name}}
                 </span>
+                <!--added space between every labels-->
+                &nbsp;
             </span>
         </p>
     </div>
@@ -49,6 +51,20 @@
                     <button class="btn btn-primary btn-sm" ng-click="changeStatus(status.Id)">Change</button>
                 </span>
             </p>
+        </div>
+    </div>
+
+    <div ng-if="issueComments.length > 0" class="col-md-10">
+        <h3 class="text-center">Comments:</h3>
+        <div ng-repeat="comment in issueComments">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    {{comment.Author.Username}} - {{comment.CreatedOn}}
+                </div>
+                <div class="panel-body">
+                    {{comment.Text}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
