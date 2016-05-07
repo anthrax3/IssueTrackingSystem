@@ -25,6 +25,25 @@ app.controller('ViewIssueController',
                 notifyService.showError('Failed loading data', err);
             }
         );
+
+        $scope.addIssueComment = function (comment) {
+            commentService.addComment(comment, $routeParams.id,
+                function success(data){
+                    commentService.getCommentForIssueId(
+                        $routeParams.id,
+                        function success(data) {
+                            $scope.issueComments = data;
+                        }, function error(err) {
+                            notifyService.showError("Failed loading data", err);
+                        }
+                    );
+                    notifyService.showInfo("Successfully added comment")
+                },
+                function error(err){
+                    notifyService.showError("Failed adding comment", err)
+                }
+            );
+        };
     }
 );
 

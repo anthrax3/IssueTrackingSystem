@@ -53,6 +53,19 @@
             </p>
         </div>
     </div>
+    
+    <div class="col-md-10" ng-if="isAssignee || isProjectLeader || authService.isAdmin">
+        <h3>Write new comment</h3>
+        <form name="issueCommentsForm">
+            <div class="form-group">
+                <label for="comment"></label>
+                <textarea id="comment" class="form-control" ng-model="comment.Text" required="required"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" ng-click="addIssueComment(comment)" ng-disabled="issueCommentsForm.$invalid">Add Comment</button>
+            </div>
+        </form>
+    </div>
 
     <div ng-if="issueComments.length > 0" class="col-md-10">
         <h3 class="text-center">Comments:</h3>

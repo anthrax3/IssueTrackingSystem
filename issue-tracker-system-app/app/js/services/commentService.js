@@ -16,8 +16,23 @@ app.factory('commentService',
             }).error(error);
         }
 
+        function addComment(comment, id, success, error) {
+            var request = {
+                method: 'POST',
+                url: baseServiceUrl + 'issues/' + id + '/comments',
+                data: comment,
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function (data) {
+                success(data);
+
+            }).error(error);
+        }
+
         return {
-            getCommentForIssueId: getCommentForIssueId
+            getCommentForIssueId: getCommentForIssueId,
+            addComment: addComment
         }
     }
 );
