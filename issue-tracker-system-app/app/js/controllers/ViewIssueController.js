@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('ViewIssueController',
-    function($scope, $location, $routeParams, authService, notifyService, issueService, commentService) {
+    function($scope, $route, $location, $routeParams, authService, notifyService, issueService, commentService) {
 
         issueService.getIssueById(
             $routeParams.id,
@@ -43,6 +43,18 @@ app.controller('ViewIssueController',
                     notifyService.showError("Failed adding comment", err)
                 }
             );
+        };
+
+        $scope.changeStatus = function(statusId){
+            issueService.changeStatus($routeParams.id, statusId,
+                function success(data){
+                    $route.reload();
+                    notifyService.showInfo("Status changed")
+                },
+                function error(err){
+                    notifyService.showError("Failed changing status", err)
+                }
+            )
         };
     }
 );

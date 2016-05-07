@@ -47,14 +47,14 @@
         <div ng-repeat="status in issueData.AvailableStatuses">
             <p>
                 <span>---- {{status.Name}}</span>
-                <span ng-if="isAssignee || isProjectLeader || isAdmin">
+                <span ng-if="isAssignee || isProjectLeader || authService.isAdmin()">
                     <button class="btn btn-primary btn-sm" ng-click="changeStatus(status.Id)">Change</button>
                 </span>
             </p>
         </div>
     </div>
-    
-    <div class="col-md-10" ng-if="isAssignee || isProjectLeader || authService.isAdmin">
+
+    <div class="col-md-10" ng-if="isAssignee || isProjectLeader || authService.isAdmin()">
         <h3>Write new comment</h3>
         <form name="issueCommentsForm">
             <div class="form-group">

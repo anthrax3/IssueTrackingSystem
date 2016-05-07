@@ -29,9 +29,23 @@ app.factory('issueService',
             }).error(error);
         }
 
+        function changeStatus(issueId, statusId, success, error){
+            var request = {
+                method: 'PUT',
+                url: baseServiceUrl + 'issues/' + issueId + '/changestatus?statusid=' + statusId,
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function (data) {
+                success(data);
+
+            }).error(error);
+        }
+
         return {
             getUsersIssues: getUsersIssues,
-            getIssueById: getIssueById
+            getIssueById: getIssueById,
+            changeStatus: changeStatus
         }
     }
 );
