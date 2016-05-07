@@ -3,6 +3,10 @@
 app.controller('AdminController',
     function ($scope, $location, userService, authService, notifyService) {
 
+        if (!authService.isAdmin()) {
+            $location.path('/')
+        }
+        
         $scope.showAllUsers = function() {
             userService.getAllUsers(
                 function success(data) {
@@ -22,6 +26,7 @@ app.controller('AdminController',
                 userData,
                 function success(data) {
                     $scope.showAllUsers();
+                    notifyService.showInfo("Make Admin Successful!");
                 },
                 function error(err) {
                     notifyService.showError("Failed making Admin!", err);

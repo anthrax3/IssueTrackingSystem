@@ -4,7 +4,7 @@ app.factory('authService',
     function ($http, baseServiceUrl) {
 
         function getCurrentUser() {
-            var userObject = sessionStorage['currentUser'];
+            var userObject = localStorage['currentUser'];
             if (userObject) {
 
                 return JSON.parse(userObject);
@@ -22,15 +22,15 @@ app.factory('authService',
         }
 
         function isAnonymous(){
-            return sessionStorage['currentUser'] == undefined;
+            return localStorage['currentUser'] == undefined;
         }
 
         function isLoggedIn(){
-            return sessionStorage['currentUser'] != undefined;
+            return localStorage['currentUser'] != undefined;
         }
 
         function isAdmin() {
-            var userObject = sessionStorage['currentUser'];
+            var userObject = localStorage['currentUser'];
             if (userObject) {
                 var parseUserObject = JSON.parse(userObject);
 
@@ -59,8 +59,8 @@ app.factory('authService',
 
                 $http(userInfoRequest).success(function (data) {
                     userData.isAdmin = data.isAdmin;
-                    sessionStorage['username'] = userData.userName;
-                    sessionStorage['currentUser'] = JSON.stringify(userData);
+                    localStorage['username'] = userData.userName;
+                    localStorage['currentUser'] = JSON.stringify(userData);
                     success(data);
 
                 }).error(error);
@@ -89,8 +89,8 @@ app.factory('authService',
             };
 
             $http(request).success(function (data) {
-                delete sessionStorage['currentUser'];
-                delete sessionStorage['username'];
+                delete localStorage['currentUser'];
+                delete localStorage['username'];
                 success(data);
             }).error(error);
         }

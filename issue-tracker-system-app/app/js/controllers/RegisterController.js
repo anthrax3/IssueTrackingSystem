@@ -2,6 +2,11 @@
 
 app.controller('RegisterController',
     function ($scope, $location, authService, notifyService) {
+
+        if (authService.isLoggedIn()) {
+            $location.path('/')
+        }
+        
         $scope.userData = {};
 
         $scope.register = function(userData) {

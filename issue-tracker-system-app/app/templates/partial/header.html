@@ -10,10 +10,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul ng-if="authService.isLoggedIn()" class="nav navbar-nav">
-                <li><a href="#/">Dashboard</a></li>
-                <li ng-if="authService.isAdmin()"><a href="#/admin">Admin Dashboard</a></li>
-                <li ng-if="authService.isAdmin()"><a ng-href="#/users/makeadmin">Make Admin</a></li>
+                <li><a ng-href="#/">Dashboard</a></li>
+                <li><a ng-href="#/profile/password">Change Password</a></li>
                 <li ng-if="authService.isAdmin()"><a ng-href="#/projects">View All Projects</a></li>
+                <li ng-if="authService.isAdmin()"><a ng-href="#/users/makeadmin">Make Admin</a></li>
+                <li ng-if="authService.isAdmin()"><a ng-href="#/admin">Admin Dashboard</a></li>
             </ul>
             <ul ng-if="authService.isAnonymous()" class="nav navbar-nav navbar-right">
                 <li><a href="#/register">Register</a></li>

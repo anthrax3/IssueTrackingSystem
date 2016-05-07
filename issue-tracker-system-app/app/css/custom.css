@@ -2,6 +2,41 @@ body {
     background: #fff;
 }
 
+.delay {
+    transition-delay: 0.5s;
+}
+
+.delay.ng-hide-add,
+.delay.ng-hide-remove,
+.loading-text.ng-hide-add,
+.loading-text.ng-hide-remove {
+    -webkit-transition: all linear 0.5s;
+    -moz-transition: all linear 0.5s;
+    -o-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    display: block !important;
+}
+
+.delay.ng-hide-add,
+.delay.ng-hide-remove {
+    transition-delay: 0.5s;
+}
+
+.delay.ng-hide-add.ng-hide-add-active,
+.delay.ng-hide-remove,
+.loading-text.ng-hide-add.ng-hide-add-active,
+.loading-text.ng-hide-remove {
+    opacity: 0;
+}
+
+.delay.ng-hide-add,
+.delay.ng-hide-remove.ng-hide-remove-active,
+.loading-text.ng-hide-add,
+.loading-text.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+
 .all-projects-table {
     word-wrap: break-word;
     table-layout:fixed;
@@ -10,5 +45,11 @@ body {
 
 .gray-info {
     color: gray;
+}
+
+.div-info {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
 

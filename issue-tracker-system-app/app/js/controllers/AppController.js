@@ -2,6 +2,11 @@
 
 app.controller('AppController',
     function ($scope, $location, authService, notifyService) {
+
+        if (authService.isAnonymous()) {
+            $location.path('/')
+        }
+        
         $scope.authService = authService;
 
         $scope.logout = function(){

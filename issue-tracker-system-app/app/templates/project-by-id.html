@@ -6,15 +6,16 @@
             </span>
     </div>
     <div class="col-md-11">
-        <p><strong>Name: </strong>{{projectData.Name}}</p>
-        <p><strong>Key: </strong>{{projectData.ProjectKey}}</p>
-        <p><strong>Description: </strong>{{projectData.Description}}</p>
-        <p><strong>Leader Id: </strong> {{projectData.Lead.Id}}
+        <div class="div-info">
+            <p><strong>Name: </strong>{{projectData.Name}}</p>
+            <p><strong>Key: </strong>{{projectData.ProjectKey}}</p>
+            <p><strong>Description: </strong>{{projectData.Description}}</p>
+            <p><strong>Leader Id: </strong> {{projectData.Lead.Id}}
             <span class="gray-info">
                 ({{projectData.Lead.Username}})
             </span>
-        </p>
-        <p><strong>Labels: </strong>
+            </p>
+            <p><strong>Labels: </strong>
             <span ng-repeat="label in projectData.Labels">
                 <span class="label label-info">
                     {{label.Name}}
@@ -22,8 +23,8 @@
                 <!--added space between every labels-->
                 &nbsp;
             </span>
-        </p>
-        <p><strong>Priorities: </strong>
+            </p>
+            <p><strong>Priorities: </strong>
             <span ng-repeat="priority in projectData.Priorities">
                 <span class="label label-danger">
                     {{priority.Name}}
@@ -31,13 +32,13 @@
                 <!--added space between every priority-->
                 &nbsp;
             </span>
-        </p>
+            </p>
+        </div>
     </div>
 
     <div class="col-md-12">
-
         <h2>Issues</h2>
-
+        <h3 ng-if="projectIssues.length === 0" class="text-center gray-info"> No Issues</h3>
         <table class="all-projects-table table table-responsive table-hover">
             <thead>
             <tr>
