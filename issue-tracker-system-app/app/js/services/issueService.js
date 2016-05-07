@@ -16,8 +16,22 @@ app.factory('issueService',
             }).error(error);
         }
 
+        function getIssueById(id, success, error) {
+            var request = {
+                method: 'GET',
+                url: baseServiceUrl + 'issues/' + id,
+                headers: authService.getAuthHeaders()
+            };
+
+            $http(request).success(function(data) {
+                success(data);
+
+            }).error(error);
+        }
+
         return {
-            getUsersIssues: getUsersIssues
+            getUsersIssues: getUsersIssues,
+            getIssueById: getIssueById
         }
     }
 );

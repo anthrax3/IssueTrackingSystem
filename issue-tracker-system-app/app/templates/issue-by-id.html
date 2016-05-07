@@ -1,0 +1,54 @@
+<div ng-hide="delay" class="row delay">
+    <div class="col-md-12">
+        <h3>Issue</h3>
+        <span ng-if="isAssignee || isAdmin">
+            <a ng-href="#/issues/{{issueId}}/edit" class="btn btn-success btn-sm">Edit Issue</a>
+        </span>
+    </div>
+    <div class="col-md-8">
+        <p><strong>Title: </strong>{{issueData.Title}}</p>
+        <p><strong>Key: </strong>{{issueData.IssueKey}}</p>
+        <p><strong>Description: </strong>{{issueData.Description}}</p>
+        <p><strong>AssigneeId: </strong>{{issueData.Assignee.Id}}
+            <span class="gray-info">
+                ({{issueData.Assignee.Username}})
+            </span>
+        </p>
+        <p><strong>PriorityId: </strong>{{issueData.Priority.Id}}
+            <span class="gray-info">
+                ({{issueData.Priority.Name}})
+            </span>
+        </p>
+        <p><strong>DueDate: </strong>{{issueData.DueDate | date}}</p>
+        <p><strong>Author: </strong>{{issueData.Author.Username}}</p>
+        <p>
+            <strong>Project: </strong>
+            <a ng-href="#/projects/{{issueData.Project.Id}}">{{issueData.Project.Name}}</a>
+        </p>
+        <p><strong>Status: </strong>{{issueData.Status.Name}}</p>
+        <p><strong>Labels: </strong>
+            <span ng-if="issueData.Labels.length === 0">
+                None
+            </span>
+            <span ng-repeat="label in issueData.Labels">
+                <span class="label label-info">
+                    {{label.Name}}
+                </span>
+            </span>
+        </p>
+    </div>
+
+
+    <div class="col-md-4">
+        <p><strong>AvailableStatuses:</strong><span ng-if="issueData.AvailableStatuses.length === 0">None</span>
+        </p>
+        <div ng-repeat="status in issueData.AvailableStatuses">
+            <p>
+                <span>---- {{status.Name}}</span>
+                <span ng-if="isAssignee || isProjectLeader || isAdmin">
+                    <button class="btn btn-primary btn-sm" ng-click="changeStatus(status.Id)">Change</button>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
