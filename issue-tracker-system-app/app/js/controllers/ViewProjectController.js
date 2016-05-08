@@ -7,7 +7,8 @@ app.controller('ViewProjectController',
             $routeParams.id,
             function success(data) {
                 $scope.projectData = data;
-                $scope.isProjectLeader = data.Lead.Username === authService.getCurrentUser().userName;
+                $scope.isProjectLeader = authService.getCurrentUser() === data.Lead.Username;
+                $scope.isAssignee = authService.getCurrentUser() === issueData.Assignee.Username;
             },
             function error(err) {
                 notifyService.showError("Failed loading data", err);

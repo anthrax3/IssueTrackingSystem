@@ -1,6 +1,6 @@
 <div class="row">
     <div ng-if="authService.isAnonymous()">
-        <div class="container col-centered">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-5">
                     <div tabindex="-1" role="dialog" aria-hidden="true">
@@ -69,6 +69,7 @@
     <div ng-if="authService.isLoggedIn()" class="row delay" ng-hide="delay">
         <div class="col-md-12">
             <h2>Assigned Issues</h2>
+            <h3 ng-if="issues.length === 0" class="text-center gray-info">No Assigned Issues</h3>
             <table class="table table-responsive table-hover">
                 <thead>
                 <tr>

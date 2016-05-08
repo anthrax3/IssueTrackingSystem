@@ -2,8 +2,8 @@
     <div class="col-md-12">
         <h3>Project: {{projectData.Name}}</h3>
         <span ng-if="isProjectLeader || authService.isAdmin()">
-                    <a ng-href="#/projects/{{projectId}}/edit" class="btn btn-success btn-sm">Edit Project</a>
-            </span>
+                <a ng-href="#/projects/{{projectId}}/edit" class="btn btn-success btn-sm">Edit Project</a>
+        </span>
     </div>
     <div class="col-md-11">
         <div class="div-info">
@@ -38,6 +38,9 @@
 
     <div class="col-md-12">
         <h2>Issues</h2>
+         <span ng-if="isProjectLeader || authService.isAdmin()">
+                <a ng-href="#/projects/{{projectId}}/add-issue" class="btn btn-success btn-sm">Add Issue</a>
+         </span>
         <h3 ng-if="projectIssues.length === 0" class="text-center gray-info"> No Issues</h3>
         <table class="all-projects-table table table-responsive table-hover">
             <thead>
