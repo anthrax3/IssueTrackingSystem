@@ -117,10 +117,7 @@ app.factory('authService',
             login: login,
             register: register,
             logout: logout,
-            changePassword: changePassword,
-            isNormalUser : function() {
-                // TODO
-            }
+            changePassword: changePassword
         }
     }
 );

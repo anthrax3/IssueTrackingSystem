@@ -45,7 +45,8 @@
 
     <div ng-if="authService.isAdmin()" class="col-md-4">
         <h2>Available Statuses</h2>
-        <span ng-if="issueData.AvailableStatuses.length === 0">None</span>
+        <h4 class="text-center gray-info" ng-if="issueData.AvailableStatuses.length === 0">No Available Statuses</h4>
+        <!--<span ng-if="issueData.AvailableStatuses.length === 0">None</span>-->
         <table class="all-projects-table table table-responsive table-hover">
             <thead>
             <tr>
