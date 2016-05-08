@@ -12,17 +12,17 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when('/login', {
-        templateUrl: 'app/templates/login.html',
+        templateUrl: 'app/templates/users/login.html',
         controller: 'LoginController'
     });
 
     $routeProvider.when('/register', {
-        templateUrl: 'app/templates/register.html',
+        templateUrl: 'app/templates/users/register.html',
         controller: 'RegisterController'
     });
 
     $routeProvider.when('/profile/password', {
-        templateUrl: 'app/templates/change-password.html',
+        templateUrl: 'app/templates/users/change-password.html',
         controller: 'AppController'
     });
 
@@ -42,12 +42,12 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when('/projects/:id', {
-        templateUrl: 'app/templates/project-by-id.html',
+        templateUrl: 'app/projects/templates/project-by-id.html',
         controller: 'ViewProjectController'
     });
 
     $routeProvider.when('/issues/:id', {
-        templateUrl: 'app/templates/issue-by-id.html',
+        templateUrl: 'app/templates/issues/issue-by-id.html',
         controller: 'ViewIssueController'
     });
 
