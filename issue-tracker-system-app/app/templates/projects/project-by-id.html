@@ -38,7 +38,7 @@
 
     <div class="col-md-12">
         <h2>Issues</h2>
-         <span ng-if="isProjectLeader || authService.isAdmin()">
+         <span ng-if="isProjectLeader || isAssignee || authService.isAdmin()">
                 <a ng-href="#/projects/{{projectId}}/add-issue" class="btn btn-success btn-sm">Add Issue</a>
          </span>
         <h3 ng-if="projectIssues.length === 0" class="text-center gray-info"> No Issues</h3>

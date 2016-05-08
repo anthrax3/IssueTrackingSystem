@@ -42,7 +42,7 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when('/projects/:id', {
-        templateUrl: 'app/projects/templates/project-by-id.html',
+        templateUrl: 'app/templates/projects/project-by-id.html',
         controller: 'ViewProjectController'
     });
 

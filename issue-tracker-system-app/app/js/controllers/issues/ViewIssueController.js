@@ -7,6 +7,7 @@ app.controller('ViewIssueController',
             $location.path('/')
         }
 
+
         issueService.getIssueById(
             $routeParams.id,
             function success(data) {

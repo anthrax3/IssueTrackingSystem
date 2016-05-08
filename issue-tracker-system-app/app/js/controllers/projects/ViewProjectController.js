@@ -6,7 +6,8 @@ app.controller('ViewProjectController',
         if (authService.isAnonymous()) {
             $location.path('/')
         }
-        
+
+
         projectService.getProjectById(
             $routeParams.id,
             function success(data) {
