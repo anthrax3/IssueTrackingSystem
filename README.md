@@ -1,7 +1,7 @@
-# IssueTrackerSystem
+# IssueTrackingSystem
 Project built with AngularJS
 
-"Issue Tracker System" is practical project assignment from "JS Frameworks with AngularJS" course at Software University.
+"Issue Tracking System" is practical project assignment from "JS Frameworks with AngularJS" course at Software University.
 
 # Description 
 
@@ -19,7 +19,7 @@ The **project leader** can edit the project, add new issues to it and change the
 Anonymous site visitors can only **login** and **register**.Logged in users can **logout**. You are given the server-side REST services to be called by your app with AJAX requests so you do not need to develop back-end.
 
 
-# Issue Tracker REST Services
+# Issue Tracking REST Services
 
 You are given the following REST services for your Social Network SPA application.
 
@@ -30,7 +30,7 @@ You are given the following REST services for your Social Network SPA applicatio
 The documentation below provides additional details for the Social Network REST services.
 
 
-# Issue Tracker SPA Application
+# Issue Tracking SPA Application
 
 Design and implement a client-side SPA application based on **AngularJS**.
 
